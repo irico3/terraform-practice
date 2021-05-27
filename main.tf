@@ -21,11 +21,7 @@ resource "aws_instance" "example" {
     instance_type = "t3.micro"
     vpc_security_group_ids = [aws_security_group.example_ec2.id]
 
-    user_data = <<EOF
-        #!/bin/bash
-        yum install -y httpd
-        systemctl start httpd.service
-    EOF
+    user_data = file("./user_data.sh")
 }
 
 output "example_public_dns" {
