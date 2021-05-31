@@ -10,14 +10,9 @@ resource "aws_security_group" "default" {
     vpc_id = var.vpc_id
 }
 
-resource "aws_security_group" "default" {
-    name = var.name
-    vpc_id = var.vpc_id
-}
-
 resource "aws_security_group_rule" "ingress" {
     type = "ingress"
-    front_port = var.port
+    from_port = var.port
     to_port = var.port
     protocol = "tcp"
     cidr_blocks = var.cidr_blocks
